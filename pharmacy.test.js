@@ -60,5 +60,11 @@ describe("Pharmacy", () => {
         new Pharmacy([new Drug("Fervex", 10, 37)]).updateBenefitValue()
       ).toEqual([new Drug("Fervex", 9, 39)]);
     });
+
+    it("should increases benefit by 3 when there are 5 days or less", () => {
+      expect(
+        new Pharmacy([new Drug("Fervex", 5, 47)]).updateBenefitValue()
+      ).toEqual([new Drug("Fervex", 4, 50)]);
+    });
   });
 });
