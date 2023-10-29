@@ -47,4 +47,12 @@ describe("Pharmacy", () => {
       ).toEqual([new Drug("Magic Pill", 2, 5)]);
     });
   });
+
+  describe("Given fervex", () => {
+    it("should increases benefit as its expiration date approaches", () => {
+      expect(
+        new Pharmacy([new Drug("Fervex", 11, 36)]).updateBenefitValue()
+      ).toEqual([new Drug("Fervex", 10, 37)]);
+    });
+  });
 });
