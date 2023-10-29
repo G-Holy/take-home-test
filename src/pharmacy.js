@@ -21,7 +21,6 @@ export class Pharmacy {
       if (
         drug.name != "Herbal Tea" &&
         drug.name != "Fervex" &&
-        drug.name != "Magic Pill" &&
         drug.benefit > 0
       ) {
         drug.benefit = drug.benefit - 1;
@@ -36,40 +35,29 @@ export class Pharmacy {
         if (drug.benefit < 50) {
           drug.benefit = drug.benefit + 1;
 
-          if (
-            drug.name == "Fervex" &&
-            drug.expiresIn <= 10 &&
-            drug.benefit < 50
-          ) {
+          if (drug.expiresIn <= 10 && drug.benefit < 50) {
             drug.benefit = drug.benefit + 1;
           }
 
-          if (
-            drug.name == "Fervex" &&
-            drug.expiresIn <= 5 &&
-            drug.benefit < 50
-          ) {
+          if (drug.expiresIn <= 5 && drug.benefit < 50) {
             drug.benefit = drug.benefit + 1;
           }
         }
       }
 
-      if (drug.name != "Magic Pill") {
-        drug.expiresIn = drug.expiresIn - 1;
-      }
-
-      if (drug.name == "Fervex" && drug.expiresIn < 0) {
-        drug.benefit = 0;
-      }
+      drug.expiresIn = drug.expiresIn - 1;
 
       if (
         drug.name != "Fervex" &&
-        drug.name != "Magic Pill" &&
         drug.name != "Herbal Tea" &&
         drug.benefit > 0 &&
         drug.expiresIn < 0
       ) {
         drug.benefit = drug.benefit - 1;
+      }
+
+      if (drug.name == "Fervex" && drug.expiresIn < 0) {
+        drug.benefit = 0;
       }
 
       if (
