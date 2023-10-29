@@ -6,7 +6,7 @@ describe("Pharmacy", () => {
       expect(
         new Pharmacy([
           new Drug("Herbal Tea", 2, 50),
-          new Drug("Fervex", 2, 50),
+          new Drug("Fervex", 2, 49),
         ]).updateBenefitValue()
       ).toEqual([new Drug("Herbal Tea", 1, 50), new Drug("Fervex", 1, 50)]);
     });

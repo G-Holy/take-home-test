@@ -36,11 +36,19 @@ export class Pharmacy {
         if (drug.benefit < 50) {
           drug.benefit = drug.benefit + 1;
 
-          if (drug.name == "Fervex" && drug.expiresIn <= 10) {
+          if (
+            drug.name == "Fervex" &&
+            drug.expiresIn <= 10 &&
+            drug.benefit < 50
+          ) {
             drug.benefit = drug.benefit + 1;
           }
 
-          if (drug.name == "Fervex" && drug.expiresIn <= 5) {
+          if (
+            drug.name == "Fervex" &&
+            drug.expiresIn <= 5 &&
+            drug.benefit < 50
+          ) {
             drug.benefit = drug.benefit + 1;
           }
         }
