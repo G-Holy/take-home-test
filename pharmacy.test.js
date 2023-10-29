@@ -14,4 +14,11 @@ describe("Pharmacy", () => {
       ).toEqual([new Drug("normal drug", -1, 2)]);
     });
   });
+  describe("Given herbal tea at the end of the day", () => {
+    it("should increase in benefit by 1", () => {
+      expect(
+        new Pharmacy([new Drug("Herbal Tea", 2, 3)]).updateBenefitValue()
+      ).toEqual([new Drug("Herbal Tea", 1, 4)]);
+    });
+  });
 });
