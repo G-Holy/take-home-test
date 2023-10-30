@@ -1,5 +1,6 @@
 import { HerbalTea } from "../entities/drugs/herbal-tea";
 import { LegacyDrug } from "../entities/drugs/legacy-drug";
+import { MagicPill } from "../entities/drugs/magic-pill";
 export class Pharmacy {
   #identifiedDrugs;
 
@@ -23,6 +24,8 @@ function createDrug({ name, expiresIn, benefit }) {
   switch (name) {
     case "Herbal Tea":
       return new HerbalTea(expiresIn, benefit);
+    case "Magic Pill":
+      return new MagicPill(expiresIn, benefit);
     default:
       return new LegacyDrug(name, expiresIn, benefit);
   }

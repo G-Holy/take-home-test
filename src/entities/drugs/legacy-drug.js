@@ -9,14 +9,6 @@ export class LegacyDrug {
   }
 
   update() {
-    if (this.name == "Magic Pill") {
-      return {
-        name: this.name,
-        expiresIn: this.expiresIn.days,
-        benefit: this.benefit.value,
-      };
-    }
-
     if (this.name != "Fervex") {
       this.benefit = this.benefit.decrease(1);
     }
