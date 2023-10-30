@@ -13,7 +13,10 @@ describe("Pharmacy", () => {
         .with("Herbal Tea", 2, 50)
         .with("Fervex", 2, 49)
         .at_the_end_of_the_day()
-        .expectMany(new Drug("Herbal Tea", 1, 50), new Drug("Fervex", 1, 50));
+        .should_have_many_drugs(
+          new Drug("Herbal Tea", 1, 50),
+          new Drug("Fervex", 1, 50)
+        );
     });
 
     it("should never have a negative benefit", () => {
@@ -101,7 +104,10 @@ describe("Pharmacy", () => {
         .with("Dafalgan", 1, 10)
         .with("Dafalgan", 0, 8)
         .at_the_end_of_the_day()
-        .expectMany(new Drug("Dafalgan", 0, 8), new Drug("Dafalgan", -1, 4));
+        .should_have_many_drugs(
+          new Drug("Dafalgan", 0, 8),
+          new Drug("Dafalgan", -1, 4)
+        );
     });
   });
 });
@@ -128,7 +134,7 @@ class PharmacyDSL {
     ]);
   }
 
-  expectMany(...expectedDrugs) {
+  should_have_many_drugs(...expectedDrugs) {
     expect(this.output).toEqual(expectedDrugs);
   }
 }
