@@ -17,12 +17,8 @@ export class LegacyDrug {
       };
     }
 
-    if (this.name != "Herbal Tea" && this.name != "Fervex") {
+    if (this.name != "Fervex") {
       this.benefit = this.benefit.decrease(1);
-    }
-
-    if (this.name == "Herbal Tea") {
-      this.benefit = this.benefit.increase(1);
     }
 
     if (this.name == "Fervex") {
@@ -39,20 +35,12 @@ export class LegacyDrug {
 
     this.expiresIn = this.expiresIn.updateToNextDay();
 
-    if (
-      this.name != "Fervex" &&
-      this.name != "Herbal Tea" &&
-      this.expiresIn.isExpired()
-    ) {
+    if (this.name != "Fervex" && this.expiresIn.isExpired()) {
       this.benefit = this.benefit.decrease(1);
     }
 
     if (this.name == "Fervex" && this.expiresIn.isExpired()) {
       this.benefit = new Benefit(0);
-    }
-
-    if (this.name == "Herbal Tea" && this.expiresIn.isExpired()) {
-      this.benefit = this.benefit.increase(1);
     }
 
     return {

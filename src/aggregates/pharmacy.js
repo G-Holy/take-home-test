@@ -1,3 +1,4 @@
+import { HerbalTea } from "../entities/drugs/herbal-tea";
 import { LegacyDrug } from "../entities/drugs/legacy-drug";
 export class Pharmacy {
   #identifiedDrugs;
@@ -20,6 +21,8 @@ export class Pharmacy {
 
 function createDrug({ name, expiresIn, benefit }) {
   switch (name) {
+    case "Herbal Tea":
+      return new HerbalTea(expiresIn, benefit);
     default:
       return new LegacyDrug(name, expiresIn, benefit);
   }
