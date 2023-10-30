@@ -23,7 +23,6 @@ export class Fervex {
     }
 
     return {
-      name: "Fervex",
       expiresIn: this.expiresIn.days,
       benefit: this.benefit.value,
     };

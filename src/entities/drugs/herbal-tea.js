@@ -12,7 +12,6 @@ export class HerbalTea {
     this.benefit = this.benefit.increase(this.expiresIn.isExpired() ? 2 : 1);
 
     return {
-      name: "Herbal Tea",
       expiresIn: this.expiresIn.days,
       benefit: this.benefit.value,
     };

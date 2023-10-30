@@ -9,7 +9,6 @@ export class MagicPill {
 
   update() {
     return {
-      name: "Magic Pill",
       expiresIn: this.expiresIn.days,
       benefit: this.benefit.value,
     };

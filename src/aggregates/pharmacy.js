@@ -34,6 +34,6 @@ function createDrug({ name, expiresIn, benefit }) {
     case "Dafalgan":
       return new Dafalgan(expiresIn, benefit);
     default:
-      return new NormalDrug(name, expiresIn, benefit);
+      return new NormalDrug(expiresIn, benefit);
   }
 }

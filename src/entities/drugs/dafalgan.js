@@ -12,7 +12,6 @@ export class Dafalgan {
     this.benefit = this.benefit.decrease(this.expiresIn.isExpired() ? 4 : 2);
 
     return {
-      name: "Dafalgan",
       expiresIn: this.expiresIn.days,
       benefit: this.benefit.value,
     };
