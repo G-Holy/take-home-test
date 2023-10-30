@@ -1,3 +1,4 @@
+import { Dafalgan } from "../entities/drugs/dafalgan";
 import { Fervex } from "../entities/drugs/fervex";
 import { HerbalTea } from "../entities/drugs/herbal-tea";
 import { MagicPill } from "../entities/drugs/magic-pill";
@@ -29,6 +30,8 @@ function createDrug({ name, expiresIn, benefit }) {
       return new MagicPill(expiresIn, benefit);
     case "Fervex":
       return new Fervex(expiresIn, benefit);
+    case "Dafalgan":
+      return new Dafalgan(expiresIn, benefit);
     default:
       return new NormalDrug(name, expiresIn, benefit);
   }

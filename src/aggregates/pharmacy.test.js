@@ -79,4 +79,15 @@ describe("Pharmacy", () => {
       ).toEqual([new Drug("Fervex", -1, 0)]);
     });
   });
+
+  describe("Dafalgan", () => {
+    it("should degrades in Benefit twice as fast as normal drugs", () => {
+      expect(
+        new Pharmacy([
+          new Drug("Dafalgan", 1, 10),
+          new Drug("Dafalgan", 0, 8),
+        ]).updateBenefitValue()
+      ).toEqual([new Drug("Dafalgan", 0, 8), new Drug("Dafalgan", -1, 4)]);
+    });
+  });
 });
