@@ -1,5 +1,5 @@
-import { Benefit } from "../../value-objects/benefit";
-import { ExpiresIn } from "../../value-objects/expires-in";
+import { Benefit } from "../../value-objects/benefit/benefit";
+import { ExpiresIn } from "../../value-objects/expires-in/expires-in";
 
 export class Fervex {
   constructor(expiresIn, benefit) {

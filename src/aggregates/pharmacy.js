@@ -3,6 +3,7 @@ import { Fervex } from "../entities/drugs/fervex";
 import { HerbalTea } from "../entities/drugs/herbal-tea";
 import { MagicPill } from "../entities/drugs/magic-pill";
 import { NormalDrug } from "../entities/drugs/normal-drug";
+
 export class Pharmacy {
   #identifiedDrugs;
 

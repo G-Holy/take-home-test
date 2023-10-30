@@ -1,5 +1,11 @@
+import { InvalidBenefitValueException } from "./invalid-benefit-value-exception";
+
 export class Benefit {
   constructor(value) {
+    if (value > 50 || value < 0) {
+      throw new InvalidBenefitValueException(value);
+    }
+
     this.value = value;
   }
 
