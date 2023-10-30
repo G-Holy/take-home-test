@@ -1,5 +1,6 @@
 import outputSnapshot from "./output.snapshot.json";
-import { Drug, Pharmacy } from "./src/pharmacy";
+import { Drug } from "./src/entities/drugs/drug";
+import { Pharmacy } from "./src/pharmacy";
 
 describe("Pharmacy", () => {
   it("Should generate same output as the valid snapshot", async () => {

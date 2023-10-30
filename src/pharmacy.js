@@ -1,74 +1,26 @@
-export class Drug {
-  constructor(name, expiresIn, benefit) {
-    this.name = name;
-    this.expiresIn = expiresIn;
-    this.benefit = benefit;
-  }
-}
-
+import { LegacyDrug } from "./entities/drugs/legacy-drug";
 export class Pharmacy {
+  #identifiedDrugs;
+
   constructor(drugs = []) {
     this.drugs = drugs;
+    this.#identifiedDrugs = drugs.map((drug) => createDrug(drug));
   }
+
   updateBenefitValue() {
-    for (var i = 0; i < this.drugs.length; i++) {
-      const drug = this.drugs[i];
-
-      if (drug.name == "Magic Pill") {
-        continue;
-      }
-
-      if (
-        drug.name != "Herbal Tea" &&
-        drug.name != "Fervex" &&
-        drug.benefit > 0
-      ) {
-        drug.benefit = drug.benefit - 1;
-      }
-
-      if (drug.name == "Herbal Tea" && drug.benefit < 50) {
-        drug.benefit = drug.benefit + 1;
-      }
-
-      if (drug.name == "Fervex") {
-        // TODO : FIX can break "never above 50"
-        if (drug.benefit < 50) {
-          drug.benefit = drug.benefit + 1;
-
-          if (drug.expiresIn <= 10 && drug.benefit < 50) {
-            drug.benefit = drug.benefit + 1;
-          }
-
-          if (drug.expiresIn <= 5 && drug.benefit < 50) {
-            drug.benefit = drug.benefit + 1;
-          }
-        }
-      }
-
-      drug.expiresIn = drug.expiresIn - 1;
-
-      if (
-        drug.name != "Fervex" &&
-        drug.name != "Herbal Tea" &&
-        drug.benefit > 0 &&
-        drug.expiresIn < 0
-      ) {
-        drug.benefit = drug.benefit - 1;
-      }
-
-      if (drug.name == "Fervex" && drug.expiresIn < 0) {
-        drug.benefit = 0;
-      }
-
-      if (
-        drug.name == "Herbal Tea" &&
-        drug.expiresIn < 0 &&
-        drug.benefit < 50
-      ) {
-        drug.benefit = drug.benefit + 1;
-      }
+    for (var i = 0; i < this.#identifiedDrugs.length; i++) {
+      const { expiresIn, benefit } = this.#identifiedDrugs[i].update();
+      this.drugs[i].setExpiresIn(expiresIn);
+      this.drugs[i].setBenefit(benefit);
     }
 
     return this.drugs;
+  }
+}
+
+function createDrug({ name, expiresIn, benefit }) {
+  switch (name) {
+    default:
+      return new LegacyDrug(name, expiresIn, benefit);
   }
 }

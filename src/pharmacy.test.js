@@ -1,5 +1,5 @@
-import { Drug, Pharmacy } from "./pharmacy";
-
+import { Drug } from "./entities/drugs/drug";
+import { Pharmacy } from "./pharmacy";
 describe("Pharmacy", () => {
   describe("Any kind of drugs", () => {
     it("should never have benefit value above 50", () => {
