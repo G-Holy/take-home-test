@@ -1,4 +1,4 @@
-import { LegacyDrug } from "./entities/drugs/legacy-drug";
+import { LegacyDrug } from "../entities/drugs/legacy-drug";
 export class Pharmacy {
   #identifiedDrugs;
 
