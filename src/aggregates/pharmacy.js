@@ -1,3 +1,4 @@
+import { Fervex } from "../entities/drugs/fervex";
 import { HerbalTea } from "../entities/drugs/herbal-tea";
 import { LegacyDrug } from "../entities/drugs/legacy-drug";
 import { MagicPill } from "../entities/drugs/magic-pill";
@@ -26,6 +27,8 @@ function createDrug({ name, expiresIn, benefit }) {
       return new HerbalTea(expiresIn, benefit);
     case "Magic Pill":
       return new MagicPill(expiresIn, benefit);
+    case "Fervex":
+      return new Fervex(expiresIn, benefit);
     default:
       return new LegacyDrug(name, expiresIn, benefit);
   }

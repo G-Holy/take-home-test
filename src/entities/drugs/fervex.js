@@ -1,23 +1,29 @@
 import { Benefit } from "../../value-objects/benefit";
 import { ExpiresIn } from "../../value-objects/expires-in";
 
-export class LegacyDrug {
-  constructor(name, expiresIn, benefit) {
+export class Fervex {
+  constructor(expiresIn, benefit) {
     this.expiresIn = new ExpiresIn(expiresIn);
     this.benefit = new Benefit(benefit);
-    this.name = name;
   }
 
   update() {
+    if (this.expiresIn.days <= 5) {
+      this.benefit = this.benefit.increase(3);
+    } else if (this.expiresIn.days <= 10) {
+      this.benefit = this.benefit.increase(2);
+    } else {
+      this.benefit = this.benefit.increase(1);
+    }
+
     this.expiresIn = this.expiresIn.updateToNextDay();
-    this.benefit = this.benefit.decrease(1);
 
     if (this.expiresIn.isExpired()) {
-      this.benefit = this.benefit.decrease(1);
+      this.benefit = new Benefit(0);
     }
 
     return {
-      name: this.name,
+      name: "Fervex",
       expiresIn: this.expiresIn.days,
       benefit: this.benefit.value,
     };
