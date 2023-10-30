@@ -1,7 +1,7 @@
 import { Benefit } from "../../value-objects/benefit";
 import { ExpiresIn } from "../../value-objects/expires-in";
 
-export class LegacyDrug {
+export class NormalDrug {
   constructor(name, expiresIn, benefit) {
     this.expiresIn = new ExpiresIn(expiresIn);
     this.benefit = new Benefit(benefit);
@@ -10,11 +10,7 @@ export class LegacyDrug {
 
   update() {
     this.expiresIn = this.expiresIn.updateToNextDay();
-    this.benefit = this.benefit.decrease(1);
-
-    if (this.expiresIn.isExpired()) {
-      this.benefit = this.benefit.decrease(1);
-    }
+    this.benefit = this.benefit.decrease(this.expiresIn.isExpired() ? 2 : 1);
 
     return {
       name: this.name,

@@ -1,7 +1,7 @@
 import { Fervex } from "../entities/drugs/fervex";
 import { HerbalTea } from "../entities/drugs/herbal-tea";
-import { LegacyDrug } from "../entities/drugs/legacy-drug";
 import { MagicPill } from "../entities/drugs/magic-pill";
+import { NormalDrug } from "../entities/drugs/normal-drug";
 export class Pharmacy {
   #identifiedDrugs;
 
@@ -30,6 +30,6 @@ function createDrug({ name, expiresIn, benefit }) {
     case "Fervex":
       return new Fervex(expiresIn, benefit);
     default:
-      return new LegacyDrug(name, expiresIn, benefit);
+      return new NormalDrug(name, expiresIn, benefit);
   }
 }
